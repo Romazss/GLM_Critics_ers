@@ -41,13 +41,6 @@
 \maketitle
 \vspace{-2.5em}
 
-\begin{keybox}
-Documento de estudio consolidado a partir de las 8 preguntas de examen. Todas comparten
-\textbf{un mismo marco teórico} (enfoque ``San Martín''): una base de datos es un
-\textbf{espacio empírico de probabilidad}, las variables son \textbf{funciones} sobre las
-etiquetas, y la \textbf{esperanza condicional es una proyección ortogonal} en el espacio de
-Hilbert $L^2$. Domina este marco y las 8 preguntas se resuelven casi mecánicamente.
-\end{keybox}
 
 % ============================================================
 \section*{0. Marco teórico común (la llave de todo)}
@@ -317,5 +310,100 @@ Pitágoras, ANOVA.
 \item \textbf{Norma del supremo} no viene de producto interno (falla paralelogramo) $\Rightarrow$ no sirve
 para definir esperanza condicional (p.\,6).
 \end{itemize}
+
+% ============================================================
+\section*{Tabla 1: Fórmulas Clave}
+\vspace{0.3em}
+\begin{center}
+\small
+\begin{tabular}{@{}p{5.5cm}p{7.5cm}@{}}
+\toprule
+\textbf{Concepto} & \textbf{Fórmula}\\
+\midrule
+Producto interno & $\langle U,V\rangle=\E[UV]=\frac1n\sum_{i=1}^n U(\omega_i)V(\omega_i)$\\
+Norma en $L^2$ & $\|U\|^2=\E[U^2]=\frac1n\sum_{i=1}^n U^2(\omega_i)$\\
+Esperanza condicional & $E(Y\mid\sg(X))(\omega)=\frac{1}{|B|}\sum_{\omega'\in B}Y(\omega')$, $B=$bloque de $\omega$\\
+Proyección sobre recta & $P_{\sg(v)}Y=\dfrac{\langle Y,v\rangle}{\langle v,v\rangle}v$\\
+Teorema de Pitágoras & $\|Y\|^2=\|\hat Y\|^2+\|Z\|^2$\\
+Descomposición ANOVA & $\Var(Y)=\Var(E(Y\mid\sg(X)))+\E(\Var(Y\mid\sg(X)))$\\
+Coef. determinación (crudo) & $r_n^2=\dfrac{\|E(Y\mid\sg(X))\|^2}{\|Y\|^2}=\dfrac{a}{b}$\\
+Coef. determinación (centrado) & $R^2=\dfrac{\Var(\hat Y)}{\Var(Y)}=\dfrac{a-\mu^2}{b-\mu^2}$\\
+$r^2$ para años & $r^2=\dfrac{SC_\text{inter}}{SC_\text{total}}=\dfrac{\sum_a n_a(\bar x_a-\bar x)^2}{\sum_i x_i^2-n\bar x^2}$\\
+Proyector ortogonal & $P_M x:=\arg\min_{y\in M}\|x-y\|$, única solución con $x-Px\perp M$\\
+Esperanza total (ley) & $\E[\hat Y]=\E[E(Y\mid\sg(X))]=\E[Y]$\\
+Residuo ortogonal & $Z=Y-E(Y\mid\sg(X))$, $\langle Z,W\rangle=0$ para $W\in\sg(X)$\\
+Igualdad del paralelogramo & $\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2$ (válida en Hilbert)\\
+Ecuaciones normales & $X^\top(y-X\beta)=0 \Rightarrow \hat\beta=(X^\top X)^{-1}X^\top y$\\
+Matriz proyectora & $P=X(X^\top X)^{-1}X^\top$, $\hat y=Py$, $e=(I-P)y$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{Tabla 2: Símbolos y Notación}
+\vspace{0.3em}
+\begin{center}
+\small
+\begin{tabular}{@{}p{2.8cm}p{9.2cm}@{}}
+\toprule
+\textbf{Símbolo} & \textbf{Significado}\\
+\midrule
+$\Om=\Omega_n$ & Conjunto finito de etiquetas (individuos), $|\Om|=n$\\
+$\mathcal P(\Om)$ & Álgebra $\sigma$ trivial (todas las partes)\\
+$P_n$ & Probabilidad uniforme empírica, $P_n(\{\omega\})=1/n$\\
+$\sg(X)$ & Subespacio de $L^2$ de funciones constantes por bloque de $X$\\
+$L^2(\Om,\mathcal P(\Om),P_n)$ & Espacio de Hilbert de funciones en $\Om$ de cuadrado integrable\\
+$\langle U,V\rangle$ & Producto interno en $L^2$: $\E[UV]$\\
+$\|U\|$ & Norma de $U$ en $L^2$: $\sqrt{\E[U^2]}$\\
+$E(Y\mid\sg(X))$ & Esperanza condicional de $Y$ dada la partición $\sg(X)$\\
+$\hat Y$ & Predictor óptimo: $E(Y\mid\sg(X))=P_{\sg(X)}Y$\\
+$Z$ & Residuo: $Z=Y-\hat Y=Y-E(Y\mid\sg(X))$\\
+$P_M$ & Proyector ortogonal sobre subespacio cerrado $M$\\
+$A_i=X^{-1}(\{x_i\})$ & Fibra $i$-ésima de $X$ (bloque de individuos con $X=x_i$)\\
+$r^2$ & Razón de correlación: $\eta^2=\Var(E(Y\mid\sg(X)))/\Var(Y)$\\
+$R^2$ & Coef. de determinación (invariante a traslaciones)\\
+$r_n^2$ & Coef. basado en momentos crudos (sobrestima si $\E[Y]\neq0$)\\
+$\mu=\E[Y]$ & Esperanza (valor medio) de $Y$\\
+$\Var(Y)$ & Varianza de $Y$: $\E[(Y-\mu)^2]$\\
+$\mathbf 1$ & Función constante $\mathbf 1(\omega)=1$ para todo $\omega$\\
+$M\perp\mathcal N$ & Subespacios ortogonales: $\langle m,n\rangle=0$ para $m\in M, n\in\mathcal N$\\
+$SC_\text{inter}$ & Suma de cuadrados entre bloques (variabilidad explicada)\\
+$SC_\text{intra}$ & Suma de cuadrados dentro de bloques (variabilidad residual)\\
+$SC_\text{total}$ & Suma total de cuadrados\\
+$X\perp Y$ & Variables independientes: $P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+% ============================================================
+\section*{Tabla 3: Resultados Clave y Teoremas}
+\vspace{0.3em}
+\begin{center}
+\small
+\begin{tabular}{@{}p{5.0cm}p{8.0cm}@{}}
+\toprule
+\textbf{Teorema/Resultado} & \textbf{Enunciado}\\
+\midrule
+\textbf{Definición de Proyección} & $Px$ minimiza $\|x-y\|$ sobre $M\iff(x-Px)\perp M$\\
+\textbf{Propiedades de $P$} & Lineal, idempotente ($P^2=P$), autoadjunto, contracción\\
+\textbf{Esperanza = Proyección} & $E[X\mid\mathcal G]=P_M X$, único $\sg(\mathcal G)$-medible minimizador en $L^2$\\
+\textbf{Insesgamiento} & $\E[Y-E(Y\mid\sg(X))]=0$ (como $\mathbf 1\in\sg(X)$)\\
+\textbf{Ortogonalidad del residuo} & $Y-E(Y\mid\sg(X))\perp\sg(X)$ (Teorema de la Proyección)\\
+\textbf{Esperanza total} & $\E[E(Y\mid\sg(X))]=\E[Y]$ (ley de la esperanza total)\\
+\textbf{Teorema de Pitágoras} & $\|Y\|^2=\|\hat Y\|^2+\|Y-\hat Y\|^2$\\
+\textbf{ANOVA / Descomposición} & $\Var(Y)=\underbrace{\Var(\hat Y)}_{\text{inter}}+\underbrace{\E[Var(Y\mid\sg(X))]}_{\text{intra}}$\\
+\textbf{Relación $R^2$ vs $r_n^2$} & $R^2\le r_n^2$, iguales sii $\E[Y]=0$ o $Y=\hat Y$ c.s.\\
+\textbf{Suma de proyecciones} & $P_{M\oplus N}=P_M+P_N$ solo si $M\perp N$ (falla sin ortogonalidad)\\
+\textbf{Frisch--Waugh--Lovell} & Regresión parcial: $P_{\sg(X_1,X_2)}Y$ requiere ortogonalizar si correlacionados\\
+\textbf{Coherencia jerárquica} & Particiones anidadas: $\sg(D)\subseteq\sg(L)\subseteq\sg(M)$ (Distrito $\subseteq$ Local $\subseteq$ Mesa)\\
+\textbf{Falacia ecológica} & Atribuir efecto agregado al nivel individual falla (Robinson, 1950)\\
+\textbf{Paradoja de Simpson} & Dirección de correlación invierte entre nivel agregado e individual\\
+\textbf{Primalidad y independencia} & Con $n=13$ primo, dos variables no triviales no pueden ser independientes\\
+\textbf{Igualdad del paralelogramo} & $\|x+y\|^2+\|x-y\|^2=2(\|x\|^2+\|y\|^2)$ caracteriza espacios de Hilbert\\
+\textbf{Estimador MCO} & $\hat\beta=(X^\top X)^{-1}X^\top y$ es BLUE bajo homocedasticidad\\
+\textbf{Ecuaciones normales} & $X^\top e=0 \Rightarrow$ residuos ortogonales a regresores\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \end{document}
