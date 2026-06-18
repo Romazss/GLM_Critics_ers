@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.19)  18 JUN 2026 00:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.19)  18 JUN 2026 01:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,7 +673,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip58
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 18.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 40
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 42
 .
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -689,26 +689,26 @@ LaTeX Info: Redefining \% on input line 8.
 )
 \openout1 = `RESUMEN_examen.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Info: Redefining \. on input line 40.
-LaTeX Info: Redefining \% on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -766,99 +766,92 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 40.
+Package hyperref Info: Link coloring ON on input line 42.
 
 (./RESUMEN_examen.out) (./RESUMEN_examen.out)
 \@outlinefile=\write4
 \openout4 = `RESUMEN_examen.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
-2.
+4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
-2.
+4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-42.
+44.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-42.
+44.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 42.
+(Font)              <12> on input line 44.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 42.
+(Font)              <8> on input line 44.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 42.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+(Font)              <6> on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 50.
- [1
+(Font)              <10.95> on input line 57.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
+1.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
 4/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2024/texmf-di
 st/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/d
 vips/lm/lm-mathsy.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm
--mathex.enc}]
-Overfull \hbox (8.7816pt too wide) in paragraph at lines 109--112
-[]$\OML/lmm/m/it/10.95 E\OT1/lmr/m/n/10.95 ([] \OMS/lmsy/m/n/10.95 j []\OT1/lmr
-/m/n/10.95 )$\T1/lmr/bx/n/10.95 : \T1/lmr/m/n/10.95 5 cla-ses (4 in-di-vi-duos 
-c/u), va-lor = pro-me-dio del año: 2015$\OMS/lmsy/m/n/10.95 !$\T1/lmr/m/n/10.95
- 18.175, 2016$\OMS/lmsy/m/n/10.95 !$\T1/lmr/m/n/10.95 17.300,
- []
-
-
-Overfull \hbox (3.7185pt too wide) in paragraph at lines 132--134
-[]\T1/lmr/bx/n/10.95 Mesa, Lo-cal, Dis-tri-to SÍ son va-ria-bles\T1/lmr/m/n/10.
-95 , con par-ti-cio-nes \T1/lmr/bx/n/10.95 je-rár-qui-cas/encajonadas\T1/lmr/m/
-n/10.95 : $\OML/lmm/m/it/10.95 ^^[\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 D\OT1
-/lmr/m/n/10.95 ) \OMS/lmsy/m/n/10.95 ^^R
- []
-
-[2]
+-ts1.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 176.
+(Font)              <10> on input line 110.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 176.
+(Font)              <7> on input line 110.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 176.
- [3] [4]
-Underfull \hbox (badness 6876) in paragraph at lines 262--262
+(Font)              <5> on input line 110.
+ [2] [3]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 212.
+ [4]
+[5]
+Underfull \hbox (badness 6876) in paragraph at lines 309--309
 []|\T1/lmr/m/n/10.95 Verosimilitud nor-mal /
  []
 
-[5]
-Overfull \hbox (1.04054pt too wide) in paragraph at lines 355--355
+[6] [7]
+Overfull \hbox (1.04054pt too wide) in paragraph at lines 404--404
 []|$\OML/lmm/m/it/10 L[]\OT1/lmr/m/n/10 (
 []\OML/lmm/m/it/10 ; \OMS/lmsy/m/n/10 P\OT1/lmr/m/n/10 (
 [])\OML/lmm/m/it/10 ; P[]\OT1/lmr/m/n/10 )$| 
  []
 
-[6] [7] [8] (./RESUMEN_examen.aux
+[8] (./RESUMEN_examen.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -870,13 +863,13 @@ Package rerunfilecheck Info: File `RESUMEN_examen.out' has not changed.
 (rerunfilecheck)             Checksum: 778D2AEC90DDA669B346789B3575C961;168.
  ) 
 Here is how much of TeX's memory you used:
- 22621 strings out of 474116
- 414930 string characters out of 5743681
- 1954187 words of memory out of 5000000
- 44570 multiletter control sequences out of 15000+600000
- 664233 words of font info for 103 fonts, out of 8000000 for 9000
+ 22655 strings out of 474116
+ 415879 string characters out of 5743681
+ 1952187 words of memory out of 5000000
+ 44606 multiletter control sequences out of 15000+600000
+ 664598 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,18n,107p,1203b,591s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,14n,107p,1203b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2024/tex
@@ -886,21 +879,20 @@ public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/l
 mmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></
 usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/t
 exlive/2024/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2024/texmf-dist/
-fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-public/lm/lmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
-r8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri10.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
-1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/am
-sfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
-c/amsfonts/symbols/msbm10.pfb>
-Output written on RESUMEN_examen.pdf (8 pages, 360037 bytes).
+/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+public/lm/lmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
+ri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on RESUMEN_examen.pdf (8 pages, 351273 bytes).
 PDF statistics:
- 200 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 130 compressed objects within 2 object streams
+ 14 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -21,6 +21,7 @@
 
 \titleformat{\section}{\Large\bfseries\color{blue!40!black}}{\thesection}{0.6em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{blue!25!black}}{\thesubsubsection}{0.6em}{}
 
 \newtcolorbox{keybox}{colback=boxblue,colframe=blue!40!black,boxrule=0.4pt,
   arc=2pt,left=6pt,right=6pt,top=4pt,bottom=4pt}
@@ -31,9 +32,10 @@
 \newcommand{\Cov}{\operatorname{Cov}}
 \newcommand{\Om}{\Omega_n}
 \newcommand{\sg}{\sigma}
+\newcommand{\inc}[1]{\smallskip\noindent\textbf{\color{blue!30!black}#1}\ }
 
 \title{\textbf{Resumen para el examen}\\[2pt]
-\large Estadística geométrica: $L^2$, proyección y esperanza condicional}
+\large Estadística geométrica en $L^2$: proyección, esperanza condicional y MCO}
 \author{}
 \date{}
 
@@ -41,6 +43,11 @@
 \maketitle
 \vspace{-2.5em}
 
+\begin{keybox}
+\small\textbf{Cómo usar este resumen.} Domina el §0 (la ``llave''): todo lo demás se deduce de él.
+Cada pregunta está dividida en sus \textbf{incisos} tal como aparecen en el enunciado. Los recuadros
+azules marcan lo que hay que poder reproducir de memoria. Al final, tres tablas de repaso.
+\end{keybox}
 
 % ============================================================
 \section*{0. Marco teórico común (la llave de todo)}
@@ -50,16 +57,18 @@
 Una base de datos es la terna $(\Om,\mathcal P(\Om),P_n)$ donde:
 \begin{itemize}[leftmargin=1.4em,itemsep=1pt]
 \item $\Om=\{\omega_1,\dots,\omega_n\}$ es el \textbf{conjunto de etiquetas (labels)} = los
-\textbf{individuos estadísticos} (identifican cada fila de forma única). No confundir la etiqueta
-con el valor de una variable.
+\textbf{individuos estadísticos} (identifican cada fila de forma única). La etiqueta \emph{identifica};
+la variable \emph{describe}. No confundirlas.
+\item $\mathcal P(\Om)$ es el $\sigma$-álgebra trivial (todas las partes): $\Om$ finito $\Rightarrow$ todo subconjunto es evento.
 \item Probabilidad \textbf{uniforme} (Laplace): $p_\omega=1/n$, y $P_n(A)=|A|/n$.
 \item Una \textbf{variable} es una función $X:\Om\to\mathrm{Im}(X)$. Cada columna es una variable.
 \end{itemize}
 
 \subsection*{0.2 Partición inducida por una variable}
 Toda $X$ con $\mathrm{Im}(X)=\{x_1,\dots,x_r\}$ induce una \textbf{partición} de $\Om$ en sus
-\textbf{fibras / bloques}: $A_i:=X^{-1}(\{x_i\})=\{\omega:X(\omega)=x_i\}$. No vacíos, disjuntos,
-cubren $\Om$. $\sg(X)$ designa el \textbf{subespacio de funciones constantes sobre cada bloque}.
+\textbf{fibras / bloques}: $A_i:=X^{-1}(\{x_i\})=\{\omega:X(\omega)=x_i\}$. Es partición porque los
+bloques son \emph{no vacíos} ($x_i\in\mathrm{Im}X$), \emph{disjuntos} ($X$ es función) y \emph{cubren}
+$\Om$. $\sg(X)$ designa el \textbf{subespacio de funciones constantes sobre cada bloque} ($\dim=$ nº de bloques).
 
 \subsection*{0.3 $L^2$ como espacio de Hilbert}
 $L^2(\Om,\mathcal P(\Om),P_n)$ con
@@ -67,7 +76,7 @@ $L^2(\Om,\mathcal P(\Om),P_n)$ con
 \langle U,V\rangle=\E[UV]=\sum_\omega U(\omega)V(\omega)P_n(\{\omega\})=\tfrac1n\sum_{i=1}^n U(\omega_i)V(\omega_i),
 \qquad \|U\|^2=\E[U^2].
 \]
-Como $\Om$ es finito, toda función está en $L^2$ y el espacio es completo (Hilbert).
+Como $\Om$ es finito, toda función está en $L^2$ y el espacio es completo (Hilbert) $\Rightarrow$ vale el Teorema de la Proyección.
 
 \subsection*{0.4 Esperanza condicional = proyección ortogonal}
 \begin{keybox}
@@ -78,12 +87,13 @@ En cada individuo vale \textbf{el promedio de $Y$ sobre su bloque}:
 \[ E(Y\mid\sg(X))(\omega)=\frac1{|B|}\sum_{\omega'\in B}Y(\omega'),\quad B=\text{bloque de }\omega. \]
 \textbf{Teorema de la Proyección (hecho central):} el residuo $Z=Y-\hat Y$ es ortogonal a todo el
 subespacio: $\langle Z,W\rangle=0$ para todo $W\in\sg(X)$.\\
-\textbf{Dato clave:} la función constante $\mathbf 1$ siempre está en $\sg(X)$.
+\textbf{Dato clave:} la constante $\mathbf 1$ siempre está en $\sg(X)$; como $\E[Z]=\langle Z,\mathbf 1\rangle$,
+la ortogonalidad da $\E[Z]=0$.
 
 \subsection*{0.5 Tres consecuencias inmediatas}
 \begin{enumerate}[leftmargin=1.6em,itemsep=2pt]
-\item \textbf{Insesgamiento / esperanza total:} como $\mathbf 1\in\sg(X)$ y $Z\perp\sg(X)$,
-$\E[Z]=\langle Z,\mathbf 1\rangle=0\Rightarrow \E[E(Y\mid\sg(X))]=\E[Y]$.
+\item \textbf{Insesgamiento / esperanza total:} $\mathbf 1\in\sg(X)$, $Z\perp\sg(X)$
+$\Rightarrow\E[Z]=0\Rightarrow \E[E(Y\mid\sg(X))]=\E[Y]$.
 \item \textbf{Pitágoras (norma):} $\|Y\|^2=\|\hat Y\|^2+\|Z\|^2$.
 \item \textbf{Descomposición de varianza (ANOVA):}
 \[ \Var(Y)=\underbrace{\Var(E(Y\mid\sg(X)))}_{\text{entre bloques (SC}_\text{inter})}
@@ -96,167 +106,204 @@ $\E[Z]=\langle Z,\mathbf 1\rangle=0\Rightarrow \E[E(Y\mid\sg(X))]=\E[Y]$.
 \item \textbf{Suma de proyecciones SOLO si hay ortogonalidad:} si $\mathcal M\perp\mathcal N$ entonces
 $P_{\mathcal M\oplus\mathcal N}=P_{\mathcal M}+P_{\mathcal N}$. Si no, \textbf{falla} (ecuaciones normales).
 \end{itemize}
+\begin{keybox}\small
+\textbf{Mapa mental.} Variable $\to$ partición $\to$ subespacio $\sg(X)$ $\to$ proyección $=$
+esperanza condicional $=$ promedio por bloque. De ahí: residuo ortogonal, esperanza total, Pitágoras,
+ANOVA, $R^2$. Toda la materia es una idea geométrica repetida.
+\end{keybox}
 
 % ============================================================
 \section*{1. Base de datos (reformas fiscales)}
-\textbf{Planteo:} tabla País$\times$Año (20 individuos, 9 variables). Espacio $\R^{20}$, pesos $1/20$.
+\textbf{Planteo:} tabla País$\times$Año, \textbf{20 individuos} (4 países $\times$ 5 años), 9 variables.
+Espacio $\R^{20}$, pesos $1/20$. \emph{Trampa:} el enunciado nombra 5 países pero la tabla trae 4.
 
-\begin{enumerate}[leftmargin=1.6em,itemsep=2pt]
-\item \textbf{Etiquetas:} los pares $(\text{País},\text{Año})$: $I=\{(\mathrm{FRA},2015),\dots\}$,
-$|I|=4\times5=20$. (El enunciado nombra 5 países pero la tabla trae 4.)
-\item \textbf{Partición por FR:} binaria $\Rightarrow$ 2 clases: $A_0=\{FR=0\}$ (2015--16, $|A_0|=8$)
-y $A_1=\{FR=1\}$ (2017--19, $|A_1|=12$).
-\item \textbf{$E(\text{Inv}\mid\text{Año})$:} 5 clases (4 individuos c/u), valor = promedio del año:
-2015$\to$18.175, 2016$\to$17.300, 2017$\to$18.825, 2018$\to$21.000, 2019$\to$18.325.
-Media global $\bar x=374.5/20=18.725$.
-\item \textbf{$r^2$ e interpretación:} razón de correlación $\eta^2$.
-\end{enumerate}
+\inc{Inciso 1 — Etiquetas.} Los pares $(\text{País},\text{Año})$:
+$I=\{(\mathrm{FRA},2015),\dots,(\mathrm{ESP},2019)\}$, $|I|=4\times5=20$, cada label pesa $1/20$.
+Ni país ni año por separado identifican: hace falta el par.
 
-\textbf{Cálculo del $r^2$:}
-\[ SC_\text{inter}=\sum_a n_a(\bar x_a-\bar x)^2=30.715,\quad
-SC_\text{total}=\sum_i x_i^2-20\bar x^2=53.8975,\quad SC_\text{intra}=23.1825. \]
-\[ r^2=\frac{SC_\text{inter}}{SC_\text{total}}=\frac{30.715}{53.8975}\approx0.570\ (\approx57\%). \]
-\textbf{Interpretación geométrica:} $E(\text{Inv}\mid\text{Año})$ es la proyección ortogonal de Inv
-sobre el subespacio $F$ de funciones constantes por año; el residuo es ortogonal a $F$. Con vectores
-centrados, $\|\text{Inv}-\bar x\|^2=\|\hat Y-\bar x\|^2+\|\text{Inv}-\hat Y\|^2$ y $r^2=\cos^2\theta$,
-con $\cos\theta=\sqrt{0.57}\approx0.755\Rightarrow\theta\approx41^\circ$.
+\inc{Inciso 2 — Partición por FR.} FR es binaria $\Rightarrow$ 2 clases:
+$A_0=\{FR=0\}$ (2015--16, sin reforma, $|A_0|=8$) y $A_1=\{FR=1\}$ (2017--19, con reforma, $|A_1|=12$).
+
+\inc{Inciso 3 — $E(\text{Inv}\mid\text{Año})$.} Año $\to$ 5 clases (4 individuos c/u); valor = promedio del año:
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Año & FRA & DEU & BEL & ESP & Suma & Promedio\\\midrule
+2015 & 19.3 & 18.5 & 18.0 & 16.9 & 72.7 & 18.175\\
+2016 & 17.1 & 17.0 & 17.1 & 18.0 & 69.2 & 17.300\\
+2017 & 15.6 & 19.7 & 20.2 & 19.8 & 75.3 & 18.825\\
+2018 & 21.9 & 20.5 & 21.2 & 20.4 & 84.0 & 21.000\\
+2019 & 16.7 & 18.4 & 19.4 & 18.8 & 73.3 & 18.325\\\bottomrule
+\end{tabular}
+\end{center}
+La media global se conserva (insesgamiento): $\bar x=374.5/20=18.725$.
+
+\inc{Inciso 4 — Cálculo de $r^2$ e interpretación.} Razón de correlación $\eta^2$ (proporción de varianza explicada por el Año):
+\[ SC_\text{inter}=\sum_a n_a(\bar x_a-\bar x)^2=4\times7.67875=30.715,\quad
+SC_\text{total}=\sum_i x_i^2-20\bar x^2=53.8975, \]
+\[ SC_\text{intra}=23.1825,\qquad
+r^2=\frac{SC_\text{inter}}{SC_\text{total}}=\frac{30.715}{53.8975}\approx0.570\ (\approx57\%). \]
+\textbf{Interpretación geométrica:} $E(\text{Inv}\mid\text{Año})=P_F(\text{Inv})$ es la proyección
+ortogonal de Inv sobre el subespacio $F$ de funciones constantes por año; el residuo es ortogonal a $F$.
+Con vectores centrados, $\|\text{Inv}-\bar x\|^2=\|\hat Y-\bar x\|^2+\|\text{Inv}-\hat Y\|^2$ y
+$r^2=\cos^2\theta$, con $\cos\theta=\sqrt{0.57}\approx0.755\Rightarrow\theta\approx41^\circ$.
 
 % ============================================================
 \section*{2. Coherencia en una base de datos (falacia ecológica)}
-\textbf{Planteo:} votos identificados por folio único; cada folio tiene opción de voto y pertenece a
-mesa $\to$ local $\to$ distrito.
-\begin{enumerate}[leftmargin=1.6em,itemsep=2pt]
-\item \textbf{Etiquetas = los folios.} La opción de voto NO es etiqueta, es una variable
-$V:\Omega_N\to\{\text{cand.1, cand.2, nulo, blanco}\}$. Los folios deben ser únicos, exhaustivos y
-mutuamente excluyentes.
-\item \textbf{Mesa, Local, Distrito SÍ son variables}, con particiones \textbf{jerárquicas/encajonadas}:
-$\sg(D)\subseteq\sg(L)\subseteq\sg(M)\subseteq L^2(\Omega_N)$ (Mesa más fina, Distrito más gruesa).
-\item \textbf{Tasa de cesantía comunal $C$:} (i) \emph{coherencia jerárquica:} asignación unívoca
-folio$\to$comuna, $K:\Omega_N\to\{\text{comunas}\}$; (ii) \emph{medibilidad:} $C$ constante por comuna,
-i.e. $C\in\sg(K)$.
-\end{enumerate}
+\textbf{Planteo:} votos con folio único, opción $\in\{$cand.1, cand.2, nulo, blanco$\}$; cada folio en mesa $\to$ local $\to$ distrito.
+
+\inc{Inciso 1 — Etiquetas.} Son \textbf{los folios} ($\Omega_N$, $p_\omega=1/N$). La \textbf{opción de voto
+NO es etiqueta}: es una variable $V:\Omega_N\to\{\text{cand.1, cand.2, nulo, blanco}\}$. Confundir folio con
+valor de variable es el error de fondo. Los folios deben ser únicos, exhaustivos y mutuamente excluyentes.
+
+\inc{Inciso 2 — ¿Mesa/Local/Distrito son variables?} Sí: funciones bien definidas sobre los folios,
+$M,L,D:\Omega_N\to\{\cdot\}$. Sus particiones son \textbf{jerárquicas/encajonadas} (cada mesa en un único
+local, cada local en un único distrito), luego Mesa refina a Local que refina a Distrito:
+\[ \sg(D)\subseteq\sg(L)\subseteq\sg(M)\subseteq L^2(\Omega_N). \]
+Existe la función de paso mesa$\mapsto$local$\mapsto$distrito, no al revés (lo fino determina lo grueso).
+
+\inc{Inciso 3 — Condiciones para la tasa de cesantía comunal $C$.} Para ser variable de la base,
+$C:\Omega_N\to\R$ (cesantía de la comuna del folio) debe cumplir: \emph{(i) coherencia jerárquica:}
+asignación unívoca folio$\to$comuna, $K:\Omega_N\to\{\text{comunas}\}$ compatible con la jerarquía;
+\emph{(ii) medibilidad:} $C$ constante por comuna, i.e. $C\in\sg(K)$.
+
 \textbf{El punto de fondo (falacia ecológica):} como $C\in\sg(K)$ es constante dentro de cada comuna,
 solo aporta variabilidad \emph{entre} comunas. Toda regresión factoriza por $E(V\mid C)=E(V\mid\sg(K))$:
 \[ \Var(V)=\underbrace{\Var(E(V\mid\sg(K)))}_{\text{entre comunas (ve }C)}
 +\underbrace{\E(\Var(V\mid\sg(K)))}_{\text{dentro: invisible}}. \]
 Atribuir el efecto agregado al individuo es la \textbf{falacia ecológica} (Robinson, 1950); puede
-invertirse (\textbf{paradoja de Simpson}). Para el nivel individual hace falta una variable definida
-sobre el folio con partición más fina que la comunal.
+invertirse (\textbf{paradoja de Simpson}: a nivel comunal ``más cesantía $\to$ más voto'', pero dentro
+de cada comuna lo contrario). Para el nivel individual hace falta una variable definida sobre el folio
+con partición más fina que la comunal.
 
 % ============================================================
 \section*{3. Modelos lineales encajonados (nested)}
-\textbf{Modelos:} M1: $E(Y\mid X_1)=\alpha_0+\alpha_1X_1$; M2: $E(Y\mid X_1,X_2)=\alpha_0+\alpha_1X_1+\alpha_2X_2$.\\
+\textbf{Modelos:} M1: $E(Y\mid X_1)=\alpha_0+\alpha_1X_1$; M2: $E(Y\mid X_1,X_2)=\alpha_0+\alpha_1X_1+\alpha_2X_2$.
 \textbf{Marco:} $\Omega_3$, uniforme $1/3$, $\langle U,V\rangle=\tfrac13\sum U_iV_i$.
 
-\textbf{Ejemplo 1 — regresores ORTOGONALES (se cumple la aditividad).}
-$\mathbf 1=(1,1,1)$, $X=(-1,0,1)$. Como $\langle\mathbf 1,X\rangle=0$:
+\inc{Ejemplo 1 — regresores ORTOGONALES (se cumple la aditividad).}
+$\mathbf 1=(1,1,1)$, $X=(-1,0,1)$. Productos: $\langle\mathbf 1,X\rangle=0$, $\langle X,X\rangle=\tfrac23$,
+$\langle Y,\mathbf 1\rangle=\bar y$, $\langle Y,X\rangle=\tfrac{y_3-y_1}{3}$. Como $\mathbf 1\perp X$,
+$\{\mathbf 1,X\}$ es base ortogonal y
 \[ E(Y\mid\sg(\mathbf 1,X))=\bar y\,\mathbf 1+\tfrac{y_3-y_1}{2}X=E(Y\mid\sg(\mathbf 1))+E(Y\mid\sg(X)).\ \checkmark \]
-La igualdad se debe a la \textbf{ortogonalidad}: proyectar sobre el plano = sumar proyecciones sobre cada eje (Pitágoras).
+La igualdad se debe a la \textbf{ortogonalidad}: proyectar sobre el plano = sumar proyecciones sobre cada eje.
 
-\textbf{Ejemplo 2 — regresores NO ortogonales (falla).}
-$\mathbf 1=(1,1,1)$, $Z=(1,0,1)$, $\langle\mathbf 1,Z\rangle=\tfrac23\neq0$. Por \textbf{ecuaciones normales}:
+\inc{Ejemplo 2 — regresores NO ortogonales (falla).}
+$\mathbf 1=(1,1,1)$, $Z=(1,0,1)$, $\langle\mathbf 1,Z\rangle=\tfrac23\neq0$. Por \textbf{ecuaciones normales}
+$\big(a\langle\mathbf 1,\mathbf 1\rangle+b\langle Z,\mathbf 1\rangle=\langle Y,\mathbf 1\rangle$, etc.$\big)$:
 \[ a=y_2,\quad b=\tfrac{y_1+y_3}{2}-y_2,\quad E(Y\mid\sg(\mathbf 1,Z))=\Big(\tfrac{y_1+y_3}{2},y_2,\tfrac{y_1+y_3}{2}\Big). \]
-En $\omega_2$: $y_2$ vs $\tfrac{y_1+y_2+y_3}{3}$; coinciden solo si $2y_2=y_1+y_3$. En general la suma de
-proyecciones cuenta dos veces la parte común.
+Comparando en $\omega_2$: $y_2$ vs $\tfrac{y_1+y_2+y_3}{3}$; coinciden solo si $2y_2=y_1+y_3$. Al solaparse
+$\sg(\mathbf 1)$ y $\sg(Z)$, sumar proyecciones cuenta dos veces la parte común.
 
-\textbf{Respuesta (¿cuándo son ``encajonados''?):}
+\inc{Pregunta — ¿cuándo son ``encajonados''?}
 \begin{enumerate}[leftmargin=1.6em,itemsep=2pt]
 \item \textbf{Inclusión de subespacios:} $\sg(\mathbf 1)\subseteq\sg(\mathbf 1,X_1)\subseteq\sg(\mathbf 1,X_1,X_2)$
 \emph{siempre}. Solo valida comparar ajustes (M2 nunca ajusta peor).
 \item \textbf{Descomposición aditiva:} se cumple \emph{si y solo si} $X_2\perp\sg(\mathbf 1,X_1)$.
 \end{enumerate}
 \begin{keybox}
-\textbf{Criterio:} M1 y M2 son ``encajonados'' en sentido fuerte solo cuando $X_2\perp\sg(\mathbf 1,X_1)$.
-Si los predictores están correlacionados, agregar $X_2$ altera el coeficiente de $X_1$. La forma correcta es
-\textbf{ortogonalizar primero} (\textbf{teorema de Frisch--Waugh--Lovell}). La receta ingenua ``ajusto,
-agrego, comparo'' solo es interpretable bajo ortogonalidad.
+\textbf{Criterio:} M1 y M2 son ``encajonados'' en sentido fuerte solo cuando $X_2\perp\sg(\mathbf 1,X_1)$
+(el coef.\ de $X_1$ no cambia al agregar $X_2$). Si los predictores están correlacionados, agregar $X_2$
+altera el coef.\ de $X_1$. La forma correcta es \textbf{ortogonalizar primero} (\textbf{Frisch--Waugh--Lovell}).
+La receta ingenua ``ajusto, agrego, comparo'' solo es interpretable bajo ortogonalidad.
 \end{keybox}
 
 % ============================================================
 \section*{4. Teorema de Pitágoras ($R^2$ vs $r_n^2$)}
-\textbf{Setup:} $Y=\hat Y+Z$, $\hat Y=E(Y\mid\sg(X))$, $Z=Y-\hat Y$, $\|Y\|^2=\|\hat Y\|^2+\|Z\|^2$.
+\textbf{Setup:} $Y=\hat Y+Z$, $\hat Y=E(Y\mid\sg(X))$, $Z=Y-\hat Y$, (1) $\|Y\|^2=\|\hat Y\|^2+\|Z\|^2$.
+Recordatorio: $\mathbf 1\in\sg(X)\Rightarrow\langle Z,\mathbf 1\rangle=\E[Z]$.
 
-\textbf{Parte 1 — $\E(Y-E(Y\mid\sg(X)))=0$:} como $\mathbf 1\in\sg(X)$ y $Z\perp\sg(X)$,
-$\langle Z,\mathbf 1\rangle=\E[Z]=0$. Consecuencia: $\E[\hat Y]=\E[Y]=:\mu$.
+\inc{Inciso 1 — $\E(Y-E(Y\mid\sg(X)))=0$.} $\mathbf 1\in\sg(X)$ y $Z\perp\sg(X)$
+$\Rightarrow\langle Z,\mathbf 1\rangle=\E[Z]=0$. Consecuencia: $\E[\hat Y]=\E[Y]=:\mu$.
 
-\textbf{Parte 2 — equivalencia (1)$\Leftrightarrow$(2):} con $\Var(U)=\E[U^2]-[\E(U)]^2$ y
-$\E[\hat Y]=\E[Y]=\mu$, $\E[Z]=0$. Restando $\mu^2$ a $\E[Y^2]=\E[\hat Y^2]+\E[Z^2]$:
-\[ \Var(Y)=\Var(E(Y\mid\sg(X)))+\Var(Y-E(Y\mid\sg(X))). \]
-``Restar $\mu^2$'' es reversible $\Rightarrow$ (1) y (2) equivalentes.
+\inc{Inciso 2 — equivalencia (1)$\Leftrightarrow$(2).} Con $\Var(U)=\E[U^2]-[\E U]^2$ y $\E[\hat Y]=\E[Y]=\mu$,
+$\E[Z]=0$. Restando $\mu^2$ a $\E[Y^2]=\E[\hat Y^2]+\E[Z^2]$ y agrupando $-\mu^2$ con el término de $\hat Y$:
+\[ \underbrace{\E[Y^2]-\mu^2}_{\Var(Y)}=\underbrace{(\E[\hat Y^2]-\mu^2)}_{\Var(\hat Y)}+\underbrace{\E[Z^2]}_{\Var(Z)}. \]
+``Restar $\mu^2$'' es reversible $\Rightarrow$ (1) y (2) equivalentes (descansa en el inciso 1).
 
-\textbf{Parte 3 — comparar.} Con $a=\|\hat Y\|^2=\E[\hat Y^2]$, $b=\|Y\|^2=\E[Y^2]$:
+\inc{Inciso 3 — comparar $R^2$ y $r_n^2$.} Con $a=\|\hat Y\|^2=\E[\hat Y^2]$, $b=\|Y\|^2=\E[Y^2]$:
 \[ r_n^2=\frac{\|E(Y\mid\sg(X))\|^2}{\|Y\|^2}=\frac{a}{b}\ \text{(crudos)},\qquad
-R^2=\frac{\Var(\hat Y)}{\Var(Y)}=\frac{a-\mu^2}{b-\mu^2}\ \text{(varianzas)}. \]
-Como $b=a+\E[Z^2]\Rightarrow a\le b$, y por Jensen $a\ge\mu^2$: $\mu^2\le a\le b$. Producto cruzado:
+R^2=\frac{\Var(\hat Y)}{\Var(Y)}=\frac{a-\mu^2}{b-\mu^2}\ \text{(centrados)}. \]
+Orden: $b=a+\E[Z^2]\Rightarrow a\le b$; por Jensen $a\ge\mu^2$. Producto cruzado ($R^2\le r_n^2\iff\mu^2 a\le\mu^2 b$):
 \begin{keybox}\[ R^2\le r_n^2. \]\end{keybox}
 \textbf{Igualdad} sii $\mu=\E[Y]=0$ (centrada) o $a=b$ ($Y=\hat Y$ c.s.). $R^2$ es el genuino coeficiente
 de determinación (invariante a traslaciones); $r_n^2$ usa momentos crudos y \textbf{sobrestima}.
 
 \textbf{Ejemplo:} $\Omega=\{1,2,3,4\}$ uniforme, bloques $\{1,2\},\{3,4\}$, $Y=(0,2,2,4)$, $\hat Y=(1,1,3,3)$,
-$\mu=2$, $b=6$, $a=5$, $\Var(Y)=2$, $\Var(\hat Y)=1$. Entonces
+$\mu=2$, $b=6$, $a=5$, $\Var(Y)=2$, $\Var(\hat Y)=1$, $Z=(-1,1,-1,1)$. Entonces
 $r_n^2=\tfrac56\approx0.833$, $R^2=\tfrac12=0.5$ ($R^2<r_n^2$).
 
 % ============================================================
 \section*{5. Esperanza condicional (construcción y ley total)}
-\textbf{Parte 1 — $P:H\to M$ es proyección ortogonal} ($M$ cerrado):
+\textbf{Setup:} $H$ Hilbert, $M$ cerrado; dato: para cada $x$ existe único $y_0\in M$ con $\|x-y_0\|$ mínimo.
+
+\inc{Inciso 1 — $P:H\to M$ es proyección ortogonal.}
 \begin{itemize}[leftmargin=1.4em,itemsep=1pt]
-\item \textbf{Definición:} $Px:=y_0$, el único minimizador de $\|x-y\|$ sobre $M$.
-\item \textbf{Lema clave:} $y_0$ minimiza $\iff(x-y_0)\perp M$. ($\Leftarrow$) Pitágoras; ($\Rightarrow$)
-$\varphi(t)=\|x-(y_0+tm)\|^2$ tiene mínimo en $t=0\Rightarrow\langle x-y_0,m\rangle=0$.
+\item \textbf{Definición:} $Px:=y_0$ (bien definido por unicidad).
+\item \textbf{Lema clave:} $y_0$ minimiza $\iff(x-y_0)\perp M$. ($\Leftarrow$) Pitágoras
+$\|x-y\|^2=\|x-y_0\|^2+\|y_0-y\|^2$; ($\Rightarrow$) $\varphi(t)=\|x-(y_0+tm)\|^2$ tiene mínimo en
+$t=0\Rightarrow\langle x-y_0,m\rangle=0$.
 \item \textbf{Lineal} (por unicidad), \textbf{idempotente} ($P^2=P$), \textbf{autoadjunto}
 ($\langle Px,z\rangle=\langle x,Pz\rangle$), \textbf{contracción} ($\|P\|\le1$), $H=M\oplus M^\perp$.
 \end{itemize}
-\textbf{Parte 2 — la proyección ES la esperanza condicional:} en $L^2(\Omega,\mathcal F,P)$ con
+
+\inc{Inciso 2 — la proyección ES la esperanza condicional.} En $L^2(\Omega,\mathcal F,P)$ con
 $\langle X,Y\rangle=\E[XY]$, $M=L^2(\Omega,\mathcal G,P)$ es cerrado. La definición de $E[X\mid\mathcal G]$
 ($\mathcal G$-medible con $\E[(X-Z)W]=0\ \forall W\in M$) es exactamente la condición de ortogonalidad
-$\Rightarrow E[X\mid\mathcal G]=PX$ (mejor predicción en media cuadrática).\\
-\textbf{Parte 3 — $\E[E(Y\mid\sg(X))]=\E(Y)$:} como $\mathbf 1\in M$ y $Y-\hat Y\perp M$:
-\[ \E[Y]-\E[\hat Y]=\langle Y-\hat Y,\mathbf 1\rangle=0. \]
+$X-Z\perp M$ $\Rightarrow E[X\mid\mathcal G]=PX$ (mejor predicción en media cuadrática).
+
+\inc{Inciso 3 — $\E[E(Y\mid\sg(X))]=\E(Y)$.} Concretando en $\Om$ finito, $M=\sg(X)$, $\mathbf 1\in M$ y
+$\E[Z]=\langle Z,\mathbf 1\rangle$. Como $Y-\hat Y\perp M$:
+\[ \E[Y]-\E[\hat Y]=\langle Y-\hat Y,\mathbf 1\rangle=0\Rightarrow\E[\hat Y]=\E[Y]. \]
 Verificación: $\hat Y|_{B_j}=\E[Y\mid B_j]$ y $\E[\hat Y]=\sum_j P(B_j)\E[Y\mid B_j]=\E[Y]$ (ley de la esperanza total).
 
 % ============================================================
 \section*{6. Igualdad del paralelogramo}
 \textbf{Enunciado:} en un espacio con producto interno, $\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2$.
 
-\textbf{1. Demostración:} expandir con $\|v\|^2=\langle v,v\rangle$, bilinealidad y simetría:
-$\|x\pm y\|^2=\|x\|^2\pm2\langle x,y\rangle+\|y\|^2$. Al sumar, los cruzados $\pm2\langle x,y\rangle$
-\textbf{se cancelan}.
+\inc{Inciso 1 — Demostración.} Con $\|v\|^2=\langle v,v\rangle$ (único uso del producto interno),
+bilinealidad y simetría: $\|x\pm y\|^2=\|x\|^2\pm2\langle x,y\rangle+\|y\|^2$. Al sumar, los cruzados
+$\pm2\langle x,y\rangle$ \textbf{se cancelan}. (Complejo: cruzados $2\,\mathrm{Re}\langle x,y\rangle$, cancela igual.)
 
-\textbf{2. Relevancia para la esperanza condicional:} es una \textbf{proyección ortogonal en $L^2$}, cuya
-existencia/unicidad (Teorema de la Proyección) usa la igualdad: para una sucesión minimizante $(Y_n)$,
+\inc{Inciso 2 — Relevancia para la esperanza condicional.} Es una \textbf{proyección ortogonal en $L^2$},
+cuya existencia/unicidad (Teorema de la Proyección) usa la igualdad: para una sucesión minimizante $(Y_n)$
+con $\|X-Y_n\|\to d$, aplicando a $a=X-Y_n$, $b=X-Y_m$,
 \[ \|Y_m-Y_n\|^2=2\|X-Y_n\|^2+2\|X-Y_m\|^2-4\Big\|X-\tfrac{Y_n+Y_m}{2}\Big\|^2\le 2\|X-Y_n\|^2+2\|X-Y_m\|^2-4d^2\to0, \]
-luego $(Y_n)$ es de Cauchy; por completitud converge a $Y^*\in M$. Sin producto interno (norma sin la
-igualdad) el argumento se rompe.
+luego $(Y_n)$ es de Cauchy; por completitud converge a $Y^*\in M$. Sin la igualdad (norma sin producto
+interno) el argumento se rompe.
 
-\textbf{3. $\|\cdot\|_\infty$ en $\R^n$ ($n\ge2$):} $x=e_1$, $y=e_2$. $\|x\|_\infty=\|y\|_\infty=1$,
-$\|x\pm y\|_\infty=1$. LI$=1+1=2$, LD$=2+2=4$. $2\neq4$ $\Rightarrow$ falla.
+\inc{Inciso 3 — $\|\cdot\|_\infty$ en $\R^n$ ($n\ge2$).} $x=e_1$, $y=e_2$: $\|x\|_\infty=\|y\|_\infty=1$,
+$\|x\pm y\|_\infty=1$. LI$=1+1=2$, LD$=2+2=4$. $2\neq4\Rightarrow$ falla.
 
-\textbf{4. $\|\cdot\|_\infty$ en $C[0,1]$:} $F(x)=1$, $G(x)=x$. $\|F\|_\infty=\|G\|_\infty=1$,
-$\|F+G\|_\infty=2$, $\|F-G\|_\infty=1$. LI$=4+1=5$, LD$=4$. $5\neq4$ $\Rightarrow$ falla.
+\inc{Inciso 4 — $\|\cdot\|_\infty$ en $C[0,1]$.} $F(x)=1$, $G(x)=x$: $\|F\|_\infty=\|G\|_\infty=1$,
+$\|F+G\|_\infty=2$, $\|F-G\|_\infty=1$. LI$=4+1=5$, LD$=4$. $5\neq4\Rightarrow$ falla (KS usa $\|\cdot\|_\infty$,
+que no induce geometría de Hilbert).
 
 % ============================================================
 \section*{7. El término de error — dos miradas}
 \textbf{Modelo:} $y=X\beta+\varepsilon$, $\mathrm{rango}(X)=p$. Ambas llegan al mismo
-$\hat\beta=(X^\top X)^{-1}X^\top y$ por caminos opuestos.
+$\hat\beta=(X^\top X)^{-1}X^\top y$ por caminos opuestos: el mismo objeto $\varepsilon$ con dos significados.
 
-\textbf{Mirada de Gauss (probabilística).} $\varepsilon$ es objeto \textbf{primitivo} con ley supuesta:
+\textbf{Mirada de Gauss (probabilística).} $\varepsilon$ es objeto \textbf{primitivo} (v.a.\ con ley supuesta):
 $\E[\varepsilon]=0$, $\Var(\varepsilon)=\sigma^2 I_n$ (homocedasticidad + no correlación); para inferir
-$\varepsilon\sim\mathcal N(0,\sigma^2I_n)$. La normal surge de exigir que la media sea máximo-verosímil
-$\Rightarrow$ MV $=$ minimizar $\sum\varepsilon_i^2$. Sin normalidad, Gauss--Markov: $\hat\beta$ es
-\textbf{BLUE}. Estilo: paramétrico, inferencial ($\Var(\hat\beta)=\sigma^2(X^\top X)^{-1}$, tests $t$,$F$, IC).
+$\varepsilon\sim\mathcal N(0,\sigma^2I_n)$. \emph{Argumento histórico:} la media aritmética como estimador
+plausible $\Rightarrow$ la ley que la hace máximo-verosímil es la normal $\Rightarrow$ MV $=$ minimizar
+$\sum\varepsilon_i^2$. Sin normalidad (Gauss--Markov): $\hat\beta$ es \textbf{BLUE}. Estimación:
+$\partial_\beta\|y-X\beta\|^2=0\Rightarrow X^\top X\hat\beta=X^\top y$. Estilo: paramétrico, inferencial
+($\Var(\hat\beta)=\sigma^2(X^\top X)^{-1}$, tests $t$,$F$, IC). Mentalidad: de la probabilidad a las propiedades.
 
-\textbf{Mirada de la Proyección (geométrica).} $y=\hat y+e$, $\hat y\in\mathcal C(X)$, $e\perp\mathcal C(X)$.
-El error \textbf{se define} como complemento ortogonal. Ecuaciones normales $=$ ortogonalidad:
-$X^\top e=0$. $P=X(X^\top X)^{-1}X^\top$, $\hat y=Py$, $e=(I-P)y$. Pitágoras $=$ ANOVA sin distribución:
-$\|y\|^2=\|\hat y\|^2+\|e\|^2$. En $L^2$, la no correlación del error con los regresores es \textbf{teorema},
-no supuesto. Estilo: geométrico, libre de distribución.
+\textbf{Mirada de la Proyección (geométrica).} $\R^n$ con $\langle u,v\rangle=u^\top v$, $\mathcal C(X)=\{X\beta\}$.
+$y=\hat y+e$, $\hat y\in\mathcal C(X)$, $e\perp\mathcal C(X)$: el error \textbf{se define} como complemento
+ortogonal. Ecuaciones normales $=$ ortogonalidad: $X^\top e=0$. $P=X(X^\top X)^{-1}X^\top$, $\hat y=Py$,
+$e=(I-P)y$. Pitágoras $=$ ANOVA sin distribución: $\|y\|^2=\|\hat y\|^2+\|e\|^2$. En $L^2$, la no correlación
+del error con los regresores es \textbf{teorema} (proyección), no supuesto. Estilo: geométrico, libre de distribución.
 
 \begin{center}
 \begin{tabular}{@{}p{4.0cm}p{4.4cm}p{4.4cm}@{}}
 \toprule
 \textbf{Criterio} & \textbf{Gauss} & \textbf{Proyección}\\
 \midrule
-Naturaleza del error & Primitivo (v.a. con ley) & Derivado (residuo ortogonal)\\
+Naturaleza del error & Primitivo (v.a.\ con ley) & Derivado (residuo ortogonal)\\
 No correlación & Supuesto & Consecuencia automática\\
 Ecuaciones normales & Anular $\partial S/\partial\beta$ & Traducir $X^\top e=0$\\
 Por qué MCO & Verosimilitud normal / BLUE & Proyección $=$ punto más cercano\\
@@ -272,28 +319,28 @@ forma} (estructural). Distinción fina: errores verdaderos $\varepsilon$ $\neq$ 
 \section*{8. Independencia de funciones ($n=13$ primo)}
 \textbf{Setup:} $\Om$ empírico uniforme, $X:\Omega_{13}\to\{x_1,\dots,x_r\}$, $Y:\Omega_{13}\to\{y_1,\dots,y_q\}$.
 
-\textbf{1. ¿$r$ arbitrario?} No: $1\le r\le n$, pues $n=\sum_{i=1}^r|A_i|\ge r$ (bloques no vacíos).
-$r=1\iff X$ constante; $r=n\iff X$ inyectiva. Con $n=13$: $r\in\{1,\dots,13\}$.
+\inc{Inciso 1 — ¿$r$ arbitrario?} No: $1\le r\le n$, pues $n=\sum_{i=1}^r|A_i|\ge r$ (bloques no vacíos) y
+$r\ge1$. $r=1\iff X$ constante; $r=n\iff X$ inyectiva. Con $n=13$: $r\in\{1,\dots,13\}$.
 
-\textbf{2. Partición de $(X,Y)$:} la fibra es $(X,Y)^{-1}(\{(x_i,y_j)\})=A_i\cap B_j$, luego la partición
+\inc{Inciso 2 — Partición de $(X,Y)$.} La fibra es $(X,Y)^{-1}(\{(x_i,y_j)\})=A_i\cap B_j$, luego la partición
 es $\{A_i\cap B_j:A_i\cap B_j\neq\varnothing\}$: el \textbf{refinamiento común} de $\{A_i\}$ y $\{B_j\}$
-(más bloques $\le r\cdot q$ y $\le n$).
+(pues $A_i=\bigsqcup_j(A_i\cap B_j)$; nº de bloques $\le r\cdot q$ y $\le n$).
 
-\textbf{3. ¿Qué $Y$ son independientes de $X$ fija?} Independencia $\iff
+\inc{Inciso 3 — ¿Qué $Y$ son independientes de $X$ fija?} Independencia $\iff
 P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$. En el espacio empírico:
 \[ \frac{|A_i\cap B_j|}{13}=\frac{|A_i|}{13}\cdot\frac{|B_j|}{13}\iff |A_i\cap B_j|=\frac{|A_i||B_j|}{13}. \]
 El lado izquierdo es entero $\Rightarrow 13\mid|A_i||B_j|$. Como \textbf{13 es primo} (Euclides):
-$13\mid|A_i|$ o $13\mid|B_j|$, y como $1\le|A_i|,|B_j|\le13$, esto fuerza $|A_i|=13$ ($X$ constante) o
+$13\mid|A_i|$ o $13\mid|B_j|$; y como $1\le|A_i|,|B_j|\le13$, esto fuerza $|A_i|=13$ ($X$ constante) o
 $|B_j|=13$ ($Y$ constante).
 \begin{itemize}[leftmargin=1.4em,itemsep=1pt]
 \item \textbf{$X$ no constante ($r\ge2$):} $\Rightarrow$ $Y$ debe ser constante ($q=1$).
 \item \textbf{$X$ constante:} toda $Y$ es independiente de $X$.
 \end{itemize}
 \begin{keybox}
-\textbf{Papel de la primalidad de 13:} la independencia exige $|A_i\cap B_j|=|A_i||B_j|/n$ entero; dos
-variables no triviales independientes requerirían $n=a\cdot b$ con $1<a,b<n$, imposible si $n$ es primo.
-Por eso sobre $\Omega_{13}$ dos variables solo pueden ser independientes si al menos una es constante.
-Con $n$ compuesto (p.\,ej.\ $n=12$) sí existirían no constantes genuinamente independientes.
+\textbf{Papel de la primalidad de 13:} la independencia exige $|A_i\cap B_j|=|A_i||B_j|/n$ entero
+(``rectángulo''); dos variables no triviales independientes requerirían $n=a\cdot b$ con $1<a,b<n$,
+imposible si $n$ es primo. Por eso sobre $\Omega_{13}$ dos variables solo pueden ser independientes si al
+menos una es constante. Con $n$ compuesto (p.\,ej.\ $n=12$) sí existirían no constantes genuinamente independientes.
 \end{keybox}
 
 % ============================================================
@@ -302,13 +349,14 @@ Con $n$ compuesto (p.\,ej.\ $n=12$) sí existirían no constantes genuinamente i
 \item \textbf{Etiqueta vs.\ variable:} la etiqueta identifica; la variable describe (preguntas 1, 2, 8).
 \item \textbf{Partición / $\sg(X)$:} fibras de la variable; $\sg(X)$ = funciones constantes por bloque.
 \item \textbf{Esperanza condicional = proyección ortogonal} = promedio por bloque = mejor predictor.
-\item \textbf{Teorema de la Proyección} $\Rightarrow$ residuo ortogonal $\Rightarrow$ esperanza total,
-Pitágoras, ANOVA.
+\item \textbf{Teorema de la Proyección} $\Rightarrow$ residuo ortogonal $\Rightarrow$ esperanza total, Pitágoras, ANOVA.
+\item \textbf{$\mathbf 1\in\sg(X)$ siempre} $\Rightarrow$ $\E[Z]=0$ (insesgamiento).
 \item \textbf{Ortogonalidad lo es todo:} proyecciones se suman solo si los subespacios son ortogonales
 (p.\,3); no correlación $\equiv$ ortogonalidad en $L^2$ centrado (p.\,7).
 \item \textbf{$R^2$ (centrado) $\le r_n^2$ (crudo)}; iguales si $\mu=0$ o ajuste perfecto (p.\,4).
 \item \textbf{Norma del supremo} no viene de producto interno (falla paralelogramo) $\Rightarrow$ no sirve
 para definir esperanza condicional (p.\,6).
+\item \textbf{Primalidad y rectángulos:} $n$ primo $\Rightarrow$ independencia solo con variable constante (p.\,8).
 \end{itemize}
 
 % ============================================================
@@ -326,15 +374,16 @@ Esperanza condicional & $E(Y\mid\sg(X))(\omega)=\frac{1}{|B|}\sum_{\omega'\in B}
 Proyección sobre recta & $P_{\sg(v)}Y=\dfrac{\langle Y,v\rangle}{\langle v,v\rangle}v$\\
 Teorema de Pitágoras & $\|Y\|^2=\|\hat Y\|^2+\|Z\|^2$\\
 Descomposición ANOVA & $\Var(Y)=\Var(E(Y\mid\sg(X)))+\E(\Var(Y\mid\sg(X)))$\\
-Coef. determinación (crudo) & $r_n^2=\dfrac{\|E(Y\mid\sg(X))\|^2}{\|Y\|^2}=\dfrac{a}{b}$\\
-Coef. determinación (centrado) & $R^2=\dfrac{\Var(\hat Y)}{\Var(Y)}=\dfrac{a-\mu^2}{b-\mu^2}$\\
-$r^2$ para años & $r^2=\dfrac{SC_\text{inter}}{SC_\text{total}}=\dfrac{\sum_a n_a(\bar x_a-\bar x)^2}{\sum_i x_i^2-n\bar x^2}$\\
+Coef.\ determinación (crudo) & $r_n^2=\dfrac{\|E(Y\mid\sg(X))\|^2}{\|Y\|^2}=\dfrac{a}{b}$\\
+Coef.\ determinación (centrado) & $R^2=\dfrac{\Var(\hat Y)}{\Var(Y)}=\dfrac{a-\mu^2}{b-\mu^2}$\\
+$r^2$ por bloques & $r^2=\dfrac{SC_\text{inter}}{SC_\text{total}}=\dfrac{\sum_a n_a(\bar x_a-\bar x)^2}{\sum_i x_i^2-n\bar x^2}$\\
 Proyector ortogonal & $P_M x:=\arg\min_{y\in M}\|x-y\|$, única solución con $x-Px\perp M$\\
 Esperanza total (ley) & $\E[\hat Y]=\E[E(Y\mid\sg(X))]=\E[Y]$\\
 Residuo ortogonal & $Z=Y-E(Y\mid\sg(X))$, $\langle Z,W\rangle=0$ para $W\in\sg(X)$\\
 Igualdad del paralelogramo & $\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2$ (válida en Hilbert)\\
 Ecuaciones normales & $X^\top(y-X\beta)=0 \Rightarrow \hat\beta=(X^\top X)^{-1}X^\top y$\\
 Matriz proyectora & $P=X(X^\top X)^{-1}X^\top$, $\hat y=Py$, $e=(I-P)y$\\
+Independencia (empírica) & $|A_i\cap B_j|=|A_i||B_j|/n$ para todo $i,j$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -361,16 +410,14 @@ $Z$ & Residuo: $Z=Y-\hat Y=Y-E(Y\mid\sg(X))$\\
 $P_M$ & Proyector ortogonal sobre subespacio cerrado $M$\\
 $A_i=X^{-1}(\{x_i\})$ & Fibra $i$-ésima de $X$ (bloque de individuos con $X=x_i$)\\
 $r^2$ & Razón de correlación: $\eta^2=\Var(E(Y\mid\sg(X)))/\Var(Y)$\\
-$R^2$ & Coef. de determinación (invariante a traslaciones)\\
-$r_n^2$ & Coef. basado en momentos crudos (sobrestima si $\E[Y]\neq0$)\\
+$R^2$ & Coef.\ de determinación (invariante a traslaciones)\\
+$r_n^2$ & Coef.\ basado en momentos crudos (sobrestima si $\E[Y]\neq0$)\\
 $\mu=\E[Y]$ & Esperanza (valor medio) de $Y$\\
 $\Var(Y)$ & Varianza de $Y$: $\E[(Y-\mu)^2]$\\
 $\mathbf 1$ & Función constante $\mathbf 1(\omega)=1$ para todo $\omega$\\
-$M\perp\mathcal N$ & Subespacios ortogonales: $\langle m,n\rangle=0$ para $m\in M, n\in\mathcal N$\\
-$SC_\text{inter}$ & Suma de cuadrados entre bloques (variabilidad explicada)\\
-$SC_\text{intra}$ & Suma de cuadrados dentro de bloques (variabilidad residual)\\
-$SC_\text{total}$ & Suma total de cuadrados\\
-$X\perp Y$ & Variables independientes: $P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$\\
+$M\perp\mathcal N$ & Subespacios ortogonales: $\langle m,n\rangle=0$\\
+$SC_\text{inter/intra/total}$ & Sumas de cuadrados entre / dentro / total\\
+$X\perp Y$ & Variables independientes\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -384,23 +431,23 @@ $X\perp Y$ & Variables independientes: $P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$\\
 \toprule
 \textbf{Teorema/Resultado} & \textbf{Enunciado}\\
 \midrule
-\textbf{Definición de Proyección} & $Px$ minimiza $\|x-y\|$ sobre $M\iff(x-Px)\perp M$\\
+\textbf{Caracterización de la proyección} & $Px$ minimiza $\|x-y\|$ sobre $M\iff(x-Px)\perp M$\\
 \textbf{Propiedades de $P$} & Lineal, idempotente ($P^2=P$), autoadjunto, contracción\\
 \textbf{Esperanza = Proyección} & $E[X\mid\mathcal G]=P_M X$, único $\sg(\mathcal G)$-medible minimizador en $L^2$\\
 \textbf{Insesgamiento} & $\E[Y-E(Y\mid\sg(X))]=0$ (como $\mathbf 1\in\sg(X)$)\\
-\textbf{Ortogonalidad del residuo} & $Y-E(Y\mid\sg(X))\perp\sg(X)$ (Teorema de la Proyección)\\
-\textbf{Esperanza total} & $\E[E(Y\mid\sg(X))]=\E[Y]$ (ley de la esperanza total)\\
+\textbf{Ortogonalidad del residuo} & $Y-E(Y\mid\sg(X))\perp\sg(X)$\\
+\textbf{Esperanza total} & $\E[E(Y\mid\sg(X))]=\E[Y]$\\
 \textbf{Teorema de Pitágoras} & $\|Y\|^2=\|\hat Y\|^2+\|Y-\hat Y\|^2$\\
-\textbf{ANOVA / Descomposición} & $\Var(Y)=\underbrace{\Var(\hat Y)}_{\text{inter}}+\underbrace{\E[Var(Y\mid\sg(X))]}_{\text{intra}}$\\
+\textbf{ANOVA / Descomposición} & $\Var(Y)=\Var(\hat Y)+\E[\Var(Y\mid\sg(X))]$\\
 \textbf{Relación $R^2$ vs $r_n^2$} & $R^2\le r_n^2$, iguales sii $\E[Y]=0$ o $Y=\hat Y$ c.s.\\
-\textbf{Suma de proyecciones} & $P_{M\oplus N}=P_M+P_N$ solo si $M\perp N$ (falla sin ortogonalidad)\\
-\textbf{Frisch--Waugh--Lovell} & Regresión parcial: $P_{\sg(X_1,X_2)}Y$ requiere ortogonalizar si correlacionados\\
-\textbf{Coherencia jerárquica} & Particiones anidadas: $\sg(D)\subseteq\sg(L)\subseteq\sg(M)$ (Distrito $\subseteq$ Local $\subseteq$ Mesa)\\
+\textbf{Suma de proyecciones} & $P_{M\oplus N}=P_M+P_N$ solo si $M\perp N$\\
+\textbf{Frisch--Waugh--Lovell} & Ortogonalizar si los regresores están correlacionados\\
+\textbf{Coherencia jerárquica} & $\sg(D)\subseteq\sg(L)\subseteq\sg(M)$ (Distrito $\subseteq$ Local $\subseteq$ Mesa)\\
 \textbf{Falacia ecológica} & Atribuir efecto agregado al nivel individual falla (Robinson, 1950)\\
-\textbf{Paradoja de Simpson} & Dirección de correlación invierte entre nivel agregado e individual\\
-\textbf{Primalidad y independencia} & Con $n=13$ primo, dos variables no triviales no pueden ser independientes\\
-\textbf{Igualdad del paralelogramo} & $\|x+y\|^2+\|x-y\|^2=2(\|x\|^2+\|y\|^2)$ caracteriza espacios de Hilbert\\
-\textbf{Estimador MCO} & $\hat\beta=(X^\top X)^{-1}X^\top y$ es BLUE bajo homocedasticidad\\
+\textbf{Paradoja de Simpson} & La correlación se invierte entre nivel agregado e individual\\
+\textbf{Primalidad e independencia} & Con $n=13$ primo, dos variables no triviales no pueden ser independientes\\
+\textbf{Igualdad del paralelogramo} & $\|x+y\|^2+\|x-y\|^2=2(\|x\|^2+\|y\|^2)$ caracteriza Hilbert\\
+\textbf{Estimador MCO} & $\hat\beta=(X^\top X)^{-1}X^\top y$ es BLUE bajo Gauss--Markov\\
 \textbf{Ecuaciones normales} & $X^\top e=0 \Rightarrow$ residuos ortogonales a regresores\\
 \bottomrule
 \end{tabular}
